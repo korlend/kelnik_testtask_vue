@@ -1,0 +1,116 @@
+@use "sass:map" as map;
+@use "sass:list" as list;
+@use "./variables.scss" as vars;
+
+@mixin font-size-get($tag) {
+  $breakpoints-keys: map.keys(vars.$breakpoints);
+  $hasTag: map.has-key(vars.$font-sizes, $tag);
+  $sizes: if(
+    map.has-key(vars.$font-sizes, $tag),
+    map.get(vars.$font-sizes, $tag),
+    ()
+  );
+  $font-family: list.nth($sizes, 1);
+
+  $index: 0;
+  $size: ();
+  $previous-size: ();
+  @each $key, $min-width in vars.$breakpoints {
+    $index: $index + 1;
+
+    $max-width: $min-width;
+    @if (list.length(vars.$breakpoints) > $index) {
+      $max-width: list.nth(list.nth(vars.$breakpoints, $index + 1), 2);
+    }
+
+    @if list.length($sizes) >= $index {
+      $size: list.nth($sizes, $index);
+    }
+
+    @if list.length($size) == 0 {
+      $size: $previous-size;
+    }
+
+    @if list.length($size) >= 1 {
+      $font-size: list.nth($size, 1);
+      $line-height: if(list.length($size) >= 2, list.nth($size, 2), $font-size);
+      $font-weight: if(
+        list.length($size) >= 3,
+        list.nth($size, 3),
+        vars.$default-weight
+      );
+
+      @if $min-width != $max-width {
+        @media (min-width: $min-width) and (max-width: $max-width) {
+          font-size: $font-size;
+          line-height: $line-height;
+          font-weight: $font-weight;
+        }
+      } @else {
+        @media (min-width: $min-width) {
+          font-size: $font-size;
+          line-height: $line-height;
+          font-weight: $font-weight;
+        }
+      }
+    }
+
+    $previous-size: $size;
+  }
+}
+
+/// Mixin to manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-from($breakpoint) {
+  // If the key exists in the map
+  @if map.has-key(vars.$breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map.get(vars.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map.keys(vars.$breakpoints)}.";
+  }
+}
+
+/// Mixin to manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map.has-key(vars.$breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (max-width: (map.get(vars.$breakpoints, $breakpoint) - 1)) {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map.keys(vars.$breakpoints)}.";
+  }
+}
+
+/// Mixin to manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-from-to($breakpoint-from, $breakpoint-to) {
+  // If the key exists in the map
+  @if map.has-key(vars.$breakpoints, $breakpoint-from) and
+    map_has_key(vars.$breakpoints, $breakpoint-to)
+  {
+    // Prints a media query based on the value
+    @media (min-width: map.get(vars.$breakpoints, $breakpoint-from)) and (max-width: (map_get(vars.$breakpoints, $breakpoint-to) - 1)) {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint-from}` or `#{$breakpoint-to}`. "
+        + "Available breakpoints are: #{map.keys(vars.$breakpoints)}.";
+  }
+}

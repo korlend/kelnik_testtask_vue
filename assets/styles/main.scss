@@ -1,0 +1,17 @@
+@use "fonts";
+@use "~/assets/icons/x-icon";
+@use "mixins";
+@use "variables";
+
+* {
+  font-family: "PTRootUI";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}

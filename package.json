@@ -1,0 +1,25 @@
+{
+  "name": "kelnik_testtask_vue",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.10.1",
+    "nuxt": "^3.15.4",
+    "nuxt-typed-router": "^3.7.3",
+    "pinia": "^3.0.1",
+    "prettier": "^3.5.1",
+    "uuid": "^11.1.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.85.0"
+  }
+}

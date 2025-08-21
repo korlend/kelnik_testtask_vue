@@ -1,0 +1,31 @@
+$z-indices: (
+  "header": 200,
+  "local_alerts": 100,
+);
+
+$breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 720px,
+  slg: 960px,
+  lg: 1200px,
+  xl: 1440px,
+  xxl: 1920px,
+) !default;
+
+$default-weight: 400;
+
+$font-sizes: (
+  // (font-size, ?line-height, ?weight)
+  // > xs => (1) > sm => (2) > md => (3) > slg => (4) > lg => (5) > xl => (6) > xxl => (7)
+  apartments-page-label: ((54px, 55px, 700), (), (), (), (), (), ()),
+  apartments-page-blocks-text: ((14px, 20px), (), (), (), (), (), ()),
+  apartments-page-table-head-text: ((14px, 20px), (), (), (), (), (), ()),
+  apartments-page-table-data-text: ((16px, 24px), (), (), (), (), (), ()),
+  apartments-page-load-more-label: ((15px, 22px), (), (), (), (), (16px, 24px), ()),
+  circle-button: ((16px, 24px), (), (), (), (), (16px, 24px), ()),
+  filters-clear-label: ((13px, 18px), (), (), (), (), (14px, 20px), ()),
+  slider-label: ((13px, 18px), (), (), (), (), (14px, 20px), ()),
+  slider-from-to-label: ((14px, 20px), (), (), (), (), (16px, 24px), ()),
+  slider-number: ((14px, 20px), (), (), (), (), (16px, 24px), ())
+) !default;
