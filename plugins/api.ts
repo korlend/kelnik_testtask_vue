@@ -8,7 +8,7 @@ declare module "#app" {
 
 export default defineNuxtPlugin((nuxtApp) => {
   const api = $fetch.create({
-    baseURL: "http://localhost:3000/",
+    baseURL: import.meta.client ? "/" : "localhost:3000/",
     onRequest({ request, options, error }) {},
     onResponseError({ response }) {
       // createAlert(response._data, LocalAlertTypes.ERROR);
