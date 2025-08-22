@@ -98,6 +98,7 @@ const clearFilters = () => {
   areaMin.value = props.area.min;
   areaMax.value = props.area.max;
   roomsFilter.value = new Set();
+  filtersChange();
 };
 </script>
 
