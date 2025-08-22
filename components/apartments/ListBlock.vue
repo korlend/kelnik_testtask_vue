@@ -214,12 +214,14 @@ const imageStyle = (item: Apartment) => {
 
   &__table {
     width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 
     &-head-row {
+      border-bottom: 1px solid #0000001a;
       @include mixins.font-size-get(apartments-page-table-head-text);
 
       & > * {
-        border-bottom: 1px solid #0000001a;
         padding: 16px 20px 16px 0px;
         text-align: left;
         font-weight: normal;
@@ -230,10 +232,10 @@ const imageStyle = (item: Apartment) => {
       height: 120px;
       box-sizing: border-box;
       padding: 15px 5px;
+      border-bottom: 1px solid #0000001a;
       @include mixins.font-size-get(apartments-page-table-data-text);
 
       & > * {
-        border-bottom: 1px solid #0000001a;
         padding: 16px 20px 16px 0px;
         text-align: left;
         vertical-align: top;
@@ -243,7 +245,7 @@ const imageStyle = (item: Apartment) => {
         background-image: var(--image);
         width: 66px;
         background-repeat: no-repeat;
-        background-position: 30% 24px;
+        background-position: 10% 24px;
       }
     }
   }
