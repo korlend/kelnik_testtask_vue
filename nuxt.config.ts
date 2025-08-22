@@ -8,7 +8,4 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/styles/main.scss"],
   modules: ["@pinia/nuxt", "nuxt-typed-router"],
-  app: {
-    baseURL: "/kelnik_testtask_vue/",
-  },
 });
