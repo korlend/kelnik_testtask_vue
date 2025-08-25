@@ -266,10 +266,10 @@ const recalcRightShift = () => {
 };
 
 const applyRightShift = (newPos: number) => {
-  if (newPos < minWidthShift) {
-    right.value = props.min;
-  } else if (newPos < posLeft.value) {
+  if (newPos < posLeft.value) {
     right.value = left.value;
+  } else if (newPos < minWidthShift) {
+    right.value = props.min;
   } else if (newPos > maxWidthShift.value) {
     right.value = props.max;
   } else {
