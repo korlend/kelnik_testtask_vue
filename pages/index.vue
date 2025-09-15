@@ -46,7 +46,7 @@ const activeSorting = ref(new Sorting<ApartmentsSortingKeys>());
 const isLoading = ref(true);
 
 const defaultLimit = 5;
-const loadMoreStep = 5;
+const loadMoreStep = 20;
 
 watch(route, () => {
   reloadApartments();
