@@ -40,9 +40,9 @@
               <span>{{ apartment.price }} ₽</span>
             </div>
           </div>
-          <div
+          <img
             class="apartments-list__blocks-item__image"
-            :style="imageStyle(apartment)"></div>
+            :src="imageLink(apartment)"></img>
         </div>
       </div>
       <!-- table -->
@@ -85,9 +85,9 @@
           <tr
             class="apartments-list__table-data-row"
             v-for="apartment in apartments">
-            <td
-              class="apartments-list__table-data-row__image"
-              :style="imageStyle(apartment)"></td>
+            <td>
+              <img class="apartments-list__table-data-row__image" :src="imageLink(apartment)" />
+            </td>
             <td>{{ apartment.name }}</td>
             <td>{{ apartment.rooms }}</td>
             <td>{{ apartment.area }}</td>
@@ -150,13 +150,6 @@ const changeSort = (sortBy: ApartmentsSortingKeys, sortDirection: SortEnum) => {
 const imageLink = (item: Apartment) => {
   return item.structure_image;
 };
-
-const imageStyle = (item: Apartment) => {
-  const image = imageLink(item);
-  return {
-    "--image": `url("${image}")`,
-  };
-};
 </script>
 
 <style lang="scss" scoped>
@@ -204,10 +197,7 @@ const imageStyle = (item: Apartment) => {
       }
 
       &__image {
-        background-image: var(--image);
         width: 66px;
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
       }
     }
   }
@@ -242,10 +232,8 @@ const imageStyle = (item: Apartment) => {
       }
 
       &__image {
-        background-image: var(--image);
         width: 66px;
-        background-repeat: no-repeat;
-        background-position: 10% 24px;
+        padding-left: 6px;
       }
     }
   }
