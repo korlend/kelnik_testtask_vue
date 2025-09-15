@@ -8,7 +8,7 @@ declare module "#app" {
 
 export default defineNuxtPlugin((nuxtApp) => {
   const api = $fetch.create({
-    baseURL: import.meta.client ? process.env.NUXT_APP_BASE_URL ? "/kelnik_testtask_vue/" : "/" : "localhost:3000/",
+    baseURL: import.meta.client ? process.env.NUXT_APP_BASE_URL || "/" : "localhost:3000/",
     onRequest({ request, options, error }) {},
     onResponseError({ response }) {
       // createAlert(response._data, LocalAlertTypes.ERROR);
