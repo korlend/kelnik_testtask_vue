@@ -148,7 +148,7 @@ const changeSort = (sortBy: ApartmentsSortingKeys, sortDirection: SortEnum) => {
 };
 
 const imageLink = (item: Apartment) => {
-  return item.structure_image;
+  return `${process.env.NUXT_APP_BASE_URL || ""}${item.structure_image}`;
 };
 </script>
 
