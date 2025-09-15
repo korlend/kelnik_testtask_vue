@@ -148,7 +148,7 @@ const changeSort = (sortBy: ApartmentsSortingKeys, sortDirection: SortEnum) => {
 };
 
 const imageLink = (item: Apartment) => {
-  return `/kelnik_testtask_vue/${item.structure_image}`;
+  return item.structure_image;
 };
 </script>
 
